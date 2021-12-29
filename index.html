@@ -14,27 +14,35 @@
 
 <body>
 
-    <p class="game__message"></p>
-    <img class="game-over-img" src="" alt="">
-    <div class="game">
-        <h1 class="game__title">Juego del ahorcado</h1>
-        <ul class="game__word">
-        </ul>
-        <p class="game__hint"></p>
-        <img class="game__hangman" src="" alt="hangman">
-        <p class="game__mistakes">
-        </p>
-    </div>
-    <div class="game__info">
-        <div class="game__buttons">
-            <input type="button" value="Pista" class="game__button game__button--hint" onclick="showHint()">
-            <input type="button" value="Volver a jugar" class="game__button game__button--restart" onclick="restart()">
+    <main class="game-container">
+        <p class="game__message"></p>
+        <img class="game-over-img" src="" alt="">
+        <div class="game">
+            <h1 class="game__title">Juego del ahorcado</h1>
+            <ul class="game__word">
+            </ul>
+            <p class="game__hint"></p>
+            <img class="game__hangman" src="" alt="hangman">
+            <p class="game__mistakes">
+            </p>
         </div>
-        <div class="game__alphabet">
+        <div class="game__info">
+            <div class="game__buttons">
+                <input type="button" value="Pista" class="game__button game__button--hint" onclick="showHint()">
+                <input type="button" value="Volver a jugar" class="game__button game__button--restart" onclick="restart()">
+            </div>
+            <div class="game__alphabet">
+            </div>
         </div>
-    </div>
-
-
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <img class="logo" src="./images/logo.png" alt="">
+            <p class="footer__text">
+                Created by Angie <span class="footer__text--red">Ladino</span> 2021
+            </p>
+        </div>
+    </footer>
 </body>
 
 

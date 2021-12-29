@@ -1,6 +1,7 @@
 * {
     width: 100%;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
     box-sizing: border-box;
     text-align: center;
@@ -13,6 +14,12 @@
     background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(4, 113, 190, 1) 0%, rgba(0, 212, 255, 1) 73%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
 }
 
 .game-over-img {
@@ -80,7 +87,7 @@
 }
 
 .alphabet__item {
-    border: solid 2px white;
+    border: solid 2px blue;
     list-style: none;
     flex-wrap: nowrap;
     display: flex;
@@ -93,16 +100,15 @@
 }
 
 .game__word--letter {
-    border: solid 2px white;
+    border: solid 1px white;
     list-style: none;
     flex-wrap: nowrap;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
+    width: 50px;
+    height: 50px;
     font-size: 1.7em;
 }
 
@@ -115,8 +121,14 @@
 .game__button {
     width: 90%;
     margin: 5px;
-    padding: 10px;
+    padding: 5px;
     border-radius: 25px;
+    border: 1px solid blue;
+    cursor: pointer;
+}
+
+.game__button:hover {
+    opacity: 0.5;
 }
 
 .game__message {
@@ -127,13 +139,46 @@
     justify-content: center;
 }
 
+.footer {
+    border-top: 1px solid blue;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+}
+
+.footer__content {
+    margin-bottom: 0;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer__text {
+    text-align: center;
+    font-size: 1em;
+}
+
+.footer__text--red {
+    color: #e71224;
+}
+
+.logo {
+    width: 50px;
+}
+
 @media only screen and (max-width: 600px) {
+    .game-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
     .game {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
+        grid-template-rows: 0.8fr 1fr 0.8fr 3fr 0.8fr;
     }
     .game__title {
-        font-size: 1.5em;
+        font-size: 1.2em;
         grid-row: 1;
     }
     .game__word {
@@ -156,7 +201,8 @@
     }
     .game__info {
         grid-template-columns: 1fr;
-        grid-template-rows: 2fr 1fr;
+        grid-template-rows: 2fr 1.2fr;
+        width: 90%
     }
     .game__button {
         padding: 2px;
@@ -182,5 +228,21 @@
     .game__message {
         font-size: 1.7em;
         width: 80%;
+    }
+    .footer__content {
+        width: 90%;
+    }
+    .footer__text {
+        font-size: 0.8em;
+    }
+    .footer {
+        position: relative;
+        left: 0px;
+        bottom: 0px;
+        height: 30px;
+        width: 100%;
+    }
+    .logo {
+        width: 30px;
     }
 }
