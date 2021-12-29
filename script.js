@@ -104,7 +104,7 @@ function restart() {
     window.location.reload()
 }
 
-window.onload = function() {
+function start() {
     showAlphabet();
     randomWord();
     compareLetter();
