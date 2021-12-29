@@ -1,0 +1,186 @@
+* {
+    width: 100%;
+    margin: 0px;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    text-align: center;
+    text-justify: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    margin: auto;
+    background: rgb(2, 0, 36);
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(4, 113, 190, 1) 0%, rgba(0, 212, 255, 1) 73%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.game-over-img {
+    width: 250px;
+}
+
+.game {
+    display: grid;
+    width: 90%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 6fr 1fr;
+    margin: auto;
+}
+
+.game__title {
+    font-family: 'Playfair Display SC', serif;
+    font-size: 2em;
+    grid-column: 1 /span 2;
+    grid-row: 1;
+    margin: auto;
+}
+
+.game__word {
+    grid-column: 1;
+    grid-row: 2;
+    margin: auto;
+}
+
+.game__hint {
+    font-size: 1.5em;
+    grid-column: 1;
+    grid-row: 3;
+    margin: auto;
+}
+
+.game__hangman {
+    grid-column: 2;
+    grid-row: 2;
+    margin: auto;
+}
+
+.game__mistakes {
+    grid-column: 2;
+    grid-row: 3;
+    margin: auto;
+    font-size: 1.5em;
+}
+
+.game__info {
+    display: grid;
+    width: 80%;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    margin: auto;
+}
+
+.game__word,
+.game__alphabet {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.alphabet__item {
+    border: solid 2px white;
+    list-style: none;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.game__word--letter {
+    border: solid 2px white;
+    list-style: none;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    font-size: 1.7em;
+}
+
+.game__buttons {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.game__button {
+    width: 90%;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.game__message {
+    font-size: 3em;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .game {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
+    }
+    .game__title {
+        font-size: 1.5em;
+        grid-row: 1;
+    }
+    .game__word {
+        grid-row: 2;
+        font-size: 1em;
+    }
+    .game__hint {
+        grid-row: 3;
+        font-size: 1em;
+    }
+    .game__hangman {
+        grid-column: 1;
+        grid-row: 4;
+    }
+    .game__mistakes {
+        grid-column: 1;
+        grid-row: 5;
+        margin: auto;
+        font-size: 1em;
+    }
+    .game__info {
+        grid-template-columns: 1fr;
+        grid-template-rows: 2fr 1fr;
+    }
+    .game__button {
+        padding: 2px;
+    }
+    .game__buttons {
+        grid-column: 1;
+        grid-row: 2;
+        margin: auto;
+    }
+    .alphabet__item {
+        border: solid 1px white;
+        margin: 1px;
+        font-size: 1em;
+        width: 30px;
+        height: 30px;
+    }
+    .game__word--letter {
+        margin: 1px;
+        font-size: 1em;
+        width: 30px;
+        height: 30px;
+    }
+    .game__message {
+        font-size: 1.7em;
+        width: 80%;
+    }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="./script.js"></script>
+</head>
+
+<body>
+
+    <p class="game__message"></p>
+    <img class="game-over-img" src="" alt="">
+    <div class="game">
+        <h1 class="game__title">Juego del ahorcado</h1>
+        <ul class="game__word">
+        </ul>
+        <p class="game__hint"></p>
+        <img class="game__hangman" src="" alt="hangman">
+        <p class="game__mistakes">
+        </p>
+    </div>
+    <div class="game__info">
+        <div class="game__buttons">
+            <input type="button" value="Pista" class="game__button game__button--hint" onclick="showHint()">
+            <input type="button" value="Volver a jugar" class="game__button game__button--restart" onclick="restart()">
+        </div>
+        <div class="game__alphabet">
+        </div>
+    </div>
+
+
+</body>
+
+
+</html>
