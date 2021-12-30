@@ -260,7 +260,7 @@
     }
 }
 
-@media (max-width: 600px) and (orientation: landscape) {
+@media (max-width: 800px) and (orientation: landscape) {
     .game-container {
         grid-template-columns: 50% 50%;
         grid-template-rows: 1fr;
