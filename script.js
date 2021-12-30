@@ -6,11 +6,13 @@ let hintList = ["Artículos de uso doméstico", "Salar cualquier tipo de carne a
 let indexWord = Math.floor(Math.random() * wordList.length); // Choose an index for a  random word from the list of words
 let alphabet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 let mistakes = 0;
+let lives = 6;
 let gameLetter;
-let showMistakes;
+let showLives;
 let letterList = [];
 let usedLetter = [];
 let hint = hintList[indexWord]
+
 
 
 // Draw alphabet
@@ -74,8 +76,8 @@ function compareLetter() {
         }
     } else { // The word doesn't include the letter selected by the player:
         if (mistakes < 6) {
-            showMistakes = document.querySelector(".game__mistakes") // Select "div" element from DOM
-            showMistakes.innerHTML = `Errores cometidos ${mistakes}` // Show counter mistakes
+            showLives = document.querySelector(".game__lives") // Select "div" element from DOM
+            showLives.innerHTML = `Vidas restantes ${lives - mistakes}` // Show counter lives
             let image = document.querySelector(".game__hangman") // select "img" element from DOM
             image.src = "./images/hangman" + mistakes + ".png"; // change hangman depending on the mistakes 
             mistakes++
