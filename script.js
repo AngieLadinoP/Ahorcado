@@ -1,7 +1,59 @@
-let wordList = ["ABARROTES", "ACECINAR", "BOREAS", "BUFAR", "CALIGINOSO", "CAPCIOSO", "DADIVAS", "DENUESTO", "EMASCULAR", "EMBELECAR", "FENECER", "FIGARO", "GALBANA", "GARLITO", "HESITACION", "HISTRION", "IDONEO", "INCITAR", "JAEZ", "JACARO", "KAYAK", "KEFIR", "LADINO", "LASO", "MACULA", "MELOPEA", "NIMIO", "NEPOTISMO", "ÑAPA", "ÑIQUIÑAQUE", "OBNUBILAR", "OBITO", "PANACEA", "PATRAÑA", "QUERELLA", "QUEJA", "RECOLETO", "ROZAGANTE", "SINDERESIS", "SOFLAMA", "TARUGO", "TRAPACERIA", "ULCERA", "URNA", "VIEIRA", "VATICINAR", "WATT", "WIFI", "XERO", "XENOFOBIA", "YACARÉ", "YEN", "ZAINO", "ZONZO"];
-
-let hintList = ["Artículos de uso doméstico", "Salar cualquier tipo de carne ahumada", "Viento del norte", "Manifestar enojo", "Niebla, oscuridad", "Engañoso, que conduce a error", "Regalos, presentes", "Insulto, ofensa", "Castrar", "Engañar con halagos", "Concluir, Morir", "Barbero", "Pereza", "Trampa", "Duda", "Actor", "Apto", "Estimular", "Adorno de las caballerías", "Fanfarrón", "Canoa esquimales", "Alimento turco gelatinoso", "Astuto", "Cansado", "Mancha", "Melodía", "Insignificante", "Abuso de poder para favorecer parientes y amigos", "Añadidura", "Despreciable", "Ofuscar", "Defunción", "Remedio", "Embuste", "Acusación", "Reclamación", "Lugar apartado", "Vistoso", "Buen juicio", "Arenga", "Zoquete", "Fraude", "Lesión tejidos orgánicos", "Caja", "Molusco", "Pronosticar", "Vatio", "Internet", "Seco", "Fobia a extranjero", "Caimán", "Moneda Japón", "Traidor", "Soso"]
-
+let wordList = [
+    ["ABARROTES", "Artículos de uso doméstico"],
+    ["ACECINAR", "Salar cualquier tipo de carne ahumada"],
+    ["ACIDIA", "Pereza"],
+    ["BOREAS", "Viento que sopla del norte"],
+    ["BUFAR", "Manifestar enojo con sonidos"],
+    ["CALIGINOSO", "Nebuloso, turbio, oscuro"],
+    ["CAPCIOSO", "Engañoso, que conduce a error"],
+    ["DADIVAS", "Regalos, presentes"],
+    ["DENUESTO", "Palabra empleada para insultar"],
+    ["EMASCULAR", "Castrar"],
+    ["EMBELECAR", "Engañar con halagos"],
+    ["FENECER", "Concluir, Morir"],
+    ["FIGARO", "Barbero"],
+    ["GARLITO", "Trampa o engaño para una persona"],
+    ["HESITACION", "Duda, vacilación"],
+    ["HISTRION", "Actor de teatro"],
+    ["IDONEO", "Apto"],
+    ["INCITAR", "Estimular"],
+    ["JAEZ", "Adorno que se pone a las caballerías"],
+    ["JACARO", "Fanfarrón"],
+    ["KAYAK", "Canoa individual que utilizan los esquimales"],
+    ["KEFIR", "Alimento turco gelatinoso semejante al yogur"],
+    ["LADINO", "Actúa con astucia y disimulo"],
+    ["LASO", "Desfallecido, cansado, sin fuerzas"],
+    ["MACULA", "Mancha"],
+    ["MELOPEA", "Canto monótono"],
+    ["NIMIO", "Insignificante"],
+    ["NEPOTISMO", "Abuso de poder para favorecer parientes y amigos"],
+    ["ÑAPA", "Gratificación pequeña para recompensar un servicio"],
+    ["ÑIQUIÑAQUE", "Despreciable"],
+    ["OBNUBILAR", "Hacer perder la capacidad de razonar"],
+    ["OBITO", "Muerte de una persona"],
+    ["PANACEA", "Remedio para cualquier tipo de problema"],
+    ["PATRAÑA", "Mentira o falsedad grande y complicada"],
+    ["QUERELLA", "Acusación"],
+    ["QUEJA", "Reclamación o protesta"],
+    ["RECOLETO", "Lugar apartado"],
+    ["ROZAGANTE", "Vistoso"],
+    ["SINDERESIS", "Juzgar rectamente, con acierto"],
+    ["SOFLAMA", "En España, arenga"],
+    ["TARUGO", "En México, falto de inteligencia o entendimiento"],
+    ["TIMAR", "Quitar o robar una cosa con engaño"],
+    ["ULCERA", "Lesión que aparece en la piel"],
+    ["URNA", "Caja de metal, piedra u otra materia"],
+    ["VENCEJO", "Lazo usado para atar algo"],
+    ["VATICINAR", "Pronosticar"],
+    ["WATT", "Vatio"],
+    ["WIFI", "Internet"],
+    ["XERO", "Prefijo que significa seco"],
+    ["XENOFOBIA", "Rechazo a los extranjeros"],
+    ["YACARÉ", "Caimán"],
+    ["YACER", "Estar echada o tendida horizontalmente"],
+    ["ZAINO", " Traidor, falso"],
+    ["ZONZO", "Que no tiene viveza, energía, ni gracia"]
+]
 
 let indexWord = Math.floor(Math.random() * wordList.length); // Choose an index for a  random word from the list of words
 let alphabet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
@@ -11,7 +63,8 @@ let gameLetter;
 let showLives;
 let letterList = [];
 let usedLetter = [];
-let hint = hintList[indexWord]
+
+let hint = wordList[indexWord][1]
 
 
 
@@ -33,8 +86,8 @@ function showAlphabet() {
 // Draw boxes for random word 
 function randomWord() {
     // Choose random word from the list
-    for (let i = 0; i < wordList[indexWord].length; i++) { // Use random number as index to find a random word  
-        let letter = wordList[indexWord][i] //Letters of the chosen word
+    for (let i = 0; i < wordList[indexWord][0].length; i++) { // Use random number as index to find a random word  
+        let letter = wordList[indexWord][0][i] //Letters of the chosen word
         letterList.push(letter)
     }
 
@@ -53,6 +106,26 @@ function showHint() {
     showHint.innerHTML = hint
 }
 
+// Remove elements when the game ends
+function removeElements() {
+    document.querySelector(".game").remove(); // Remove word and hangman 
+    document.querySelector(".game__button--hint").remove();
+    document.querySelector(".game__alphabet").remove();
+}
+// Show message according to the status
+function gameOverMessage(status) {
+    message = document.querySelector(".game__message") // Get element from DOM
+    let imgGameOver = document.querySelector(".game-over-img") // select "img" element from DOM
+    if (status == "winner") {
+        message.innerHTML = `Ganaste, descubriste la palabra ${letterList.join("")}` // Show winning message. Use join to turn array into string
+        imgGameOver.src = "./images/happyFace.png";
+    }
+    if (status == "loser") {
+        message.innerHTML = `Perdiste, la palabra era ${letterList.join("")} que se define como ${hint.toLowerCase()}` // Show losing message. Use join to turn array into string
+        imgGameOver.src = "./images/sadFace.png";
+    }
+}
+
 // Compare Letter chosen by the player and write it down on the empty boxes if it matches 
 function compareLetter() {
     let selectedLetter = this.value;
@@ -62,16 +135,11 @@ function compareLetter() {
                 indexLetter = letterList.indexOf(selectedLetter) // Returns the index or position where the selected letter appears in the word 
                 position = document.querySelector(".game__word--letter" + i) // Get element from DOM (boxes drawn previously) 
                 position.innerHTML = selectedLetter // Write the letter in the places where it matches the position of the same letter in the word 
-                usedLetter.splice(position, 0, selectedLetter)
+                usedLetter.splice(position, 0, selectedLetter) // Position to add items, number items to be removed, element to be added
             }
             if (usedLetter.length == letterList.length) { // Compare arrays: list with letters of the word and list with letters chosen by the player 
-                document.querySelector(".game").remove(); // Remove word and hangman 
-                document.querySelector(".game__button--hint").remove();
-                document.querySelector(".game__alphabet").remove();
-                message = document.querySelector(".game__message") // Get element from DOM
-                message.innerHTML = `Ganaste, descubriste la palabra ${letterList.join("")}` // Show winning message. Use join to turn array into string
-                let imgGameOver = document.querySelector(".game-over-img") // select "img" element from DOM
-                imgGameOver.src = "./images/happyFace.png";
+                removeElements();
+                gameOverMessage("winner")
             }
         }
     } else { // The word doesn't include the letter selected by the player:
@@ -82,15 +150,8 @@ function compareLetter() {
             image.src = "./images/hangman" + mistakes + ".png"; // change hangman depending on the mistakes 
             mistakes++
         } else {
-            document.querySelector(".game").remove();
-            document.querySelector(".game__button--hint").remove();
-            document.querySelector(".game__alphabet").remove();
-            message = document.querySelector(".game__message") // Get element from DOM
-            message.innerHTML = `Perdiste, la palabra era ${letterList.join("")} que se define como ${hint.toLowerCase()}` // Show losing message. Use join to turn array into string
-            let imgGameOver = document.querySelector(".game-over-img") // select "img" element from DOM
-            imgGameOver.src = "./images/sadFace.png";
-
-
+            removeElements();
+            gameOverMessage("loser");
         }
     }
 

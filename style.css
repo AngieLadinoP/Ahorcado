@@ -22,6 +22,14 @@
     grid-template-rows: 1fr 1fr;
 }
 
+.game__message {
+    font-size: 3em;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .game-over-img {
     width: 250px;
 }
@@ -30,7 +38,7 @@
     display: grid;
     width: 90%;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 6fr 1fr;
+    grid-template-rows: 1fr 6fr;
     margin: auto;
 }
 
@@ -42,29 +50,22 @@
     margin: auto;
 }
 
-.game__word {
-    grid-column: 1;
-    grid-row: 2;
-    margin: auto;
+.game__word--letter {
+    border: solid 1px white;
+    list-style: none;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.7em;
+    border-radius: 10px;
 }
 
-.game__hint {
-    font-size: 1.5em;
-    grid-column: 1;
-    grid-row: 3;
-    margin: auto;
-}
-
-.game__hangman {
-    grid-column: 2;
-    grid-row: 2;
-    margin: auto;
-}
-
+.game__hint,
 .game__lives {
-    grid-column: 2;
-    grid-row: 3;
-    margin: auto;
     font-size: 1.5em;
 }
 
@@ -99,20 +100,6 @@
     cursor: pointer;
 }
 
-.game__word--letter {
-    border: solid 1px white;
-    list-style: none;
-    flex-wrap: nowrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-    width: 50px;
-    height: 50px;
-    font-size: 1.7em;
-    border-radius: 10px;
-}
-
 .game__buttons {
     display: flex;
     flex-direction: column;
@@ -132,16 +119,8 @@
     opacity: 0.5;
 }
 
-.game__message {
-    font-size: 3em;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .footer {
-    border-top: 1px solid blue;
+    border-top: 1px solid white;
     position: fixed;
     left: 0px;
     bottom: 0px;
@@ -174,30 +153,35 @@
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
     }
+    .game__message {
+        font-size: 1.7em;
+        width: 80%;
+    }
     .game {
         grid-template-columns: 1fr;
-        grid-template-rows: 0.8fr 1fr 0.8fr 3fr 0.8fr;
+        grid-template-rows: 1fr 3fr 6fr;
     }
     .game__title {
         font-size: 1.2em;
         grid-row: 1;
     }
-    .game__word {
+    .word-info {
         grid-row: 2;
-        font-size: 1em;
     }
-    .game__hint {
+    .game__word--letter {
+        margin: 1px;
+        font-size: 1em;
+        width: 30px;
+        height: 30px;
+    }
+    .lives-info {
         grid-row: 3;
-        font-size: 1em;
     }
-    .game__hangman {
-        grid-column: 1;
-        grid-row: 4;
+    .game__word,
+    .game__hint {
+        font-size: 1em;
     }
     .game__lives {
-        grid-column: 1;
-        grid-row: 5;
-        margin: auto;
         font-size: 1em;
     }
     .game__info {
@@ -220,16 +204,6 @@
         width: 30px;
         height: 30px;
     }
-    .game__word--letter {
-        margin: 1px;
-        font-size: 1em;
-        width: 30px;
-        height: 30px;
-    }
-    .game__message {
-        font-size: 1.7em;
-        width: 80%;
-    }
     .footer__content {
         width: 90%;
     }
@@ -237,11 +211,7 @@
         font-size: 0.8em;
     }
     .footer {
-        position: fixed;
-        left: 0px;
-        bottom: 0px;
         height: 30px;
-        width: 100%;
     }
     .logo {
         width: 30px;
@@ -254,8 +224,6 @@
     }
     .footer {
         position: relative;
-        left: 0px;
-        bottom: 0px;
         height: 30px;
     }
 }
