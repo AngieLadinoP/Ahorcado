@@ -64,6 +64,8 @@ let hint = wordList[indexWord][1];
 let letterList = [];
 let usedLetter = [];
 let gameLetter;
+let pressedKey;
+
 
 // Draw alphabet
 function showAlphabet() {
