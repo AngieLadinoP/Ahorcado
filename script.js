@@ -1,3 +1,8 @@
+// Variables
+let alphabet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+let mistakes = 0;
+let lives = 6;
+let showLives;
 let wordList = [
     ["ABARROTES", "Artículos de uso doméstico"],
     ["ACECINAR", "Salar cualquier tipo de carne ahumada"],
@@ -38,8 +43,8 @@ let wordList = [
     ["RECOLETO", "Lugar apartado"],
     ["ROZAGANTE", "Vistoso"],
     ["SINDERESIS", "Juzgar rectamente, con acierto"],
-    ["SOFLAMA", "En España, arenga"],
-    ["TARUGO", "En México, falto de inteligencia o entendimiento"],
+    ["SOFLAMA", "Arenga en España"],
+    ["TARUGO", "Falto de inteligencia o entendimiento en México"],
     ["TIMAR", "Quitar o robar una cosa con engaño"],
     ["ULCERA", "Lesión que aparece en la piel"],
     ["URNA", "Caja de metal, piedra u otra materia"],
@@ -49,24 +54,16 @@ let wordList = [
     ["WIFI", "Internet"],
     ["XERO", "Prefijo que significa seco"],
     ["XENOFOBIA", "Rechazo a los extranjeros"],
-    ["YACARÉ", "Caimán"],
+    ["YACARE", "Caimán"],
     ["YACER", "Estar echada o tendida horizontalmente"],
     ["ZAINO", " Traidor, falso"],
     ["ZONZO", "Que no tiene viveza, energía, ni gracia"]
-]
-
+];
 let indexWord = Math.floor(Math.random() * wordList.length); // Choose an index for a  random word from the list of words
-let alphabet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-let mistakes = 0;
-let lives = 6;
-let gameLetter;
-let showLives;
+let hint = wordList[indexWord][1];
 let letterList = [];
 let usedLetter = [];
-
-let hint = wordList[indexWord][1]
-
-
+let gameLetter;
 
 // Draw alphabet
 function showAlphabet() {
@@ -74,61 +71,18 @@ function showAlphabet() {
     let alphabetList = document.querySelector(".game__alphabet"); //  Select div element from DOM
     for (i = 0; i < alphabet.length; i++) {
         let alphabetLetter = document.createElement("button"); //  Create "button" element for each alphabet letter
-        alphabetLetter.className = "alphabet__item"
-        alphabetLetter.value = alphabet[i] // Add alphabet letter as the value of the element
-        alphabetLetter.textContent = alphabet[i] // Add alphabet letter to the "button" element. The player will see this  
-        alphabetLetter.addEventListener("click", compareLetter);
-        alphabetLetter.addEventListener("click", removeLetter);
+        alphabetLetter.className = "alphabet__item";
+        alphabetLetter.value = alphabet[i]; // Add alphabet letter as the value of the element
+        alphabetLetter.textContent = alphabet[i]; // Add alphabet letter to the "button" element. The player will see this  
+        alphabetLetter.addEventListener("click", compareLetter); // see if the alphabet letter matches any letter of the word 
+        alphabetLetter.addEventListener("click", removeLetter); // disable alphabet letter after click
         alphabetList.appendChild(alphabetLetter); //attach the "buttons" to the "game__alphabet" element from DOM
-    }
-}
-
-// Draw boxes for random word 
-function randomWord() {
-    // Choose random word from the list
-    for (let i = 0; i < wordList[indexWord][0].length; i++) { // Use random number as index to find a random word  
-        let letter = wordList[indexWord][0][i] //Letters of the chosen word
-        letterList.push(letter)
-    }
-
-    // Draw boxes for the word
-    let gameList = document.querySelector('.game__word');
-    for (i = 0; i < letterList.length; i++) {
-        gameLetter = document.createElement('li');
-        gameLetter.className = "game__word--letter game__word--letter" + i;
-        gameList.appendChild(gameLetter);
-    }
-}
-
-// Show hint for the selected word 
-function showHint() {
-    let showHint = document.querySelector(".game__hint");
-    showHint.innerHTML = hint
-}
-
-// Remove elements when the game ends
-function removeElements() {
-    document.querySelector(".game").remove(); // Remove word and hangman 
-    document.querySelector(".game__button--hint").remove();
-    document.querySelector(".game__alphabet").remove();
-}
-// Show message according to the status
-function gameOverMessage(status) {
-    message = document.querySelector(".game__message") // Get element from DOM
-    let imgGameOver = document.querySelector(".game-over-img") // select "img" element from DOM
-    if (status == "winner") {
-        message.innerHTML = `Ganaste, descubriste la palabra ${letterList.join("")}` // Show winning message. Use join to turn array into string
-        imgGameOver.src = "./images/happyFace.png";
-    }
-    if (status == "loser") {
-        message.innerHTML = `Perdiste, la palabra era ${letterList.join("")} que se define como ${hint.toLowerCase()}` // Show losing message. Use join to turn array into string
-        imgGameOver.src = "./images/sadFace.png";
     }
 }
 
 // Compare Letter chosen by the player and write it down on the empty boxes if it matches 
 function compareLetter() {
-    let selectedLetter = this.value;
+    let selectedLetter = this.value; // Value of alphabet letter clicked
     if (letterList.includes(selectedLetter)) { // The word includes the letter selected by the player:
         for (i = 0; i < letterList.length; i++) {
             if (letterList[i] == selectedLetter) { // The player's letter matches the letter in a position of the word:
@@ -157,10 +111,55 @@ function compareLetter() {
 
 }
 
+// Remove elements when the game ends
+function removeElements() {
+    document.querySelector(".game").remove();
+    document.querySelector(".game__button--hint").remove();
+    document.querySelector(".game__alphabet").remove();
+}
 
-// Remove chosen letter letter
+// Show message according to the status
+function gameOverMessage(status) { // status-> "winner" or "loser" 
+    message = document.querySelector(".game__message"); // Get element from DOM
+    let imgGameOver = document.querySelector(".game-over-img"); // select "img" element from DOM
+    if (status == "winner") {
+        message.innerHTML = `Ganaste, descubriste la palabra ${letterList.join("")}`; // Show winning message. Use join to turn array into string
+        imgGameOver.src = "./images/happyFace.png";
+    }
+    if (status == "loser") {
+        message.innerHTML = `Perdiste, la palabra era ${letterList.join("")} que se define como ${hint.toLowerCase()}`; // Show losing message. Use join to turn array into string
+        imgGameOver.src = "./images/sadFace.png";
+    }
+}
+
+// Remove chosen letter of the alphabet 
 function removeLetter() {
     this.disabled = true
+}
+
+// Choose random word from the list
+function randomWord(list, index) { // list-> Array of words and hints  ; index-> random number to get one word and its hint
+    for (let i = 0; i < list[index][0].length; i++) { // Use random number as index to find a random word  
+        let letter = list[index][0][i]; //Letters of the chosen word
+        letterList.push(letter);
+    }
+    return letterList;
+}
+
+// Draw boxes for the word chosen with function randomWord
+function showWordBoxes(list) { // list-> Array with letters of the word chosen
+    let gameList = document.querySelector('.game__word');
+    for (i = 0; i < list.length; i++) {
+        gameLetter = document.createElement('li');
+        gameLetter.className = "game__word--letter game__word--letter" + i;
+        gameList.appendChild(gameLetter);
+    }
+}
+
+// Show hint for the selected word 
+function showHint() {
+    let showHint = document.querySelector(".game__hint");
+    showHint.innerHTML = hint;
 }
 
 function restart() {
@@ -169,6 +168,7 @@ function restart() {
 
 function start() {
     showAlphabet();
-    randomWord();
+    randomWord(wordList, indexWord); // Choose random word -> returns: letterList
+    showWordBoxes(letterList)
     compareLetter();
 }
