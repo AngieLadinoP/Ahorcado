@@ -73,7 +73,7 @@ function showAlphabet() {
     let alphabetList = document.querySelector(".game__alphabet"); //  Select div element from DOM
     for (i = 0; i < alphabet.length; i++) {
         let alphabetLetter = document.createElement("button"); //  Create "button" element for each alphabet letter
-        alphabetLetter.className = "alphabet__item";
+        alphabetLetter.className = "alphabet__item alphabet__item--" + alphabet[i];
         alphabetLetter.value = alphabet[i]; // Add alphabet letter as the value of the element
         alphabetLetter.textContent = alphabet[i]; // Add alphabet letter to the "button" element. The player will see this  
         alphabetLetter.addEventListener("click", compareLetter); // see if the alphabet letter matches any letter of the word 
@@ -110,9 +110,20 @@ function compareLetter() {
             gameOverMessage("loser");
         }
     }
-
 }
-
+// Detect pressed key on the PC keyboard and disabled it on the screen keyboard
+function compareKey() {
+    document.addEventListener("keydown", function(event) { // Detect pressed key 
+        key = event.key.toUpperCase() // Turn pressed key into upper case so that it matches the game's format
+        for (i = 0; i < alphabet.length; i++) {
+            if (key == alphabet[i]) { // See if the pressed key is a letter (compare pressed key with alphabet letters previously defined)
+                let buttonKey = document.querySelector(".alphabet__item--" + key) // get button of pressed key 
+                buttonKey.click() // simulate a mouse click on an element
+                buttonKey.addEventListener("click", removeLetter) // Disable button 
+            }
+        }
+    })
+}
 // Remove elements when the game ends
 function removeElements() {
     document.querySelector(".game").remove();
@@ -173,4 +184,5 @@ function start() {
     randomWord(wordList, indexWord); // Choose random word -> returns: letterList
     showWordBoxes(letterList)
     compareLetter();
+    compareKey();
 }
