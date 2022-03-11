@@ -1,5 +1,5 @@
 <h1 align="center">Hangman</h1>
-<p>Traditional hangman game developed with <b>html, css and javascript</b>. </br>
+<p>Traditional hangman game developed with <b>HTML, CSS</b> and <b>JAVASCRIPT</b>. </br>
 Responsive design, with the possibility to play with the on-screen keyboard or the computer keyboard.</p> 
 <br/><br/>
 
